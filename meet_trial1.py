@@ -105,20 +105,7 @@ def media(camera=False,mic=False):
     action = get_action()
     action.key_down(Keys.CONTROL).send_keys('d').pause(2).send_keys('e').key_up(Keys.CONTROL).perform()
     driver.implicitly_wait(50)
-    # if not(camera) and not(mic):
-    #     action.key_down(Keys.CONTROL).send_keys('d').pause(2).send_keys('e').key_up(Keys.CONTROL).perform()
-    #     driver.implicitly_wait(50)
-    #     return
-    # if not(camera): 
-    #     action.key_down(Keys.CONTROL).pause(1).send_keys('e').key_up(Keys.CONTROL).perform()
-    #     driver.implicitly_wait(50)
-    #     return
-    # if not(mic): 
-    #     action.key_down(Keys.CONTROL).pause(1).send_keys('d').key_up(Keys.CONTROL).perform()
-    #     driver.implicitly_wait(50)
     
-
-#caption is prompt for input , default is bydefault input ,timeout in sec
 def read_with_timeout( caption, default, default_prompt = "You did not respond!", timeout = 10):
     import sys, time, msvcrt
     start_time = time.time()
@@ -143,7 +130,6 @@ def read_with_timeout( caption, default, default_prompt = "You did not respond!"
     else:
         return default
 
-#day = 'Monday',check = True, False
 def fetch_links(day, check=False, d_count=False):
     import requests
     import base64
@@ -156,8 +142,7 @@ def fetch_links(day, check=False, d_count=False):
 
     try :
         response = requests.get(json_url)
-        jsonResponse = response.json()  # the response is a JSON
-        #the JSON is encoded in base 64, hence decode it
+        jsonResponse = response.json()  
         content = base64.b64decode(jsonResponse['content'])
         tt_json = content.decode('utf-8')
         tt_sch = json.loads(tt_json)
@@ -172,22 +157,7 @@ def fetch_links(day, check=False, d_count=False):
     g_d = tt_sch['g_d']
     time_table = tt_sch['time_table']
     subjects = tt_sch['subjects']
-
-
-    # g_d = '''\t\t       DEPARTMENT OF AUTOMOBILE ENGINEERING\n\t\t\t  B.E/ B.Tech / Regulation : 2016 \n\n\t\tAcademic Year: 2020-21 Semester: ODD Semester: VII'''
-    # time_table ={}
-    # time_table["Monday"] = {'1_HOUR': {'start_time' : '09:28:00', 'close_time' : '10:25:00', 'SUB CODE': 'AE16704' } , '2_HOUR' :{'start_time' : '10:38:00', 'close_time' : '11:37:00', 'SUB CODE': 'AE16702' }, '3_HOUR' :{'start_time' : '11:48:00', 'close_time' : '12:45:00', 'SUB CODE': 'AE16703' }}
-    # time_table["Tuesday"] = {'1_HOUR': {'start_time' : '09:28:00', 'close_time' : '10:25:00', 'SUB CODE': 'AE16701' } , '2_HOUR' :{'start_time' : '10:38:00', 'close_time' : '11:35:00', 'SUB CODE': 'AE16007' }, '3_HOUR' :{'start_time' : '11:48:00', 'close_time' : '12:43:00', 'SUB CODE': 'AE16704' }}
-    # time_table["Wednesday"] = {'1_HOUR': {'start_time' : '09:28:00', 'close_time' : '10:25:00', 'SUB CODE': 'AE16701' }, '2_HOUR' :{'start_time' : '10:38:00', 'close_time' : '11:35:00', 'SUB CODE': 'AE16701' }, '3_HOUR' :{'start_time' : '11:48:00', 'close_time' : '12:45:00', 'SUB CODE': 'AE16702' }}
-    # time_table["Thursday"] = {'1_HOUR': {'start_time' : '09:28:00', 'close_time' : '10:25:00', 'SUB CODE': 'AE16703' }, '2_HOUR' :{'start_time' : '10:38:00', 'close_time' : '11:37:00', 'SUB CODE': 'AE16007' }, '3_HOUR' :{'start_time' : '11:48:00', 'close_time' : '12:43:00', 'SUB CODE': 'AE16703' }}
-    # time_table["Friday"] = {'1_HOUR': {'start_time' : '09:28:00', 'close_time' : '10:25:00', 'SUB CODE': 'AE16007' }, '2_HOUR' :{'start_time' : '10:38:00', 'close_time' : '11:34:00', 'SUB CODE': 'AE16704' }, '3_HOUR' :{'start_time' : '11:48:00', 'close_time' : '12:45:00', 'SUB CODE': 'AE16702' }}
-    # subjects ={}
-    # subjects['AE16704'] = { 'meet_link' :'https://meet.google.com/lookup/cymbltznwg', 'classroom_link' : "https://classroom.google.com/u/5/c/MTE0NTI3MjEyOTQ0",'SUB CODE':'AE16704', 'SUBJECT NAME':'Vehicle Dynamics','FACULTY': 'Mr. J. Dhanabal'}
-    # subjects['AE16702'] = { 'meet_link' :'https://meet.google.com/lookup/aq7oubuibe','classroom_link' : "https://classroom.google.com/u/5/c/MTE0NTI2MTQzNDkw", 'SUB CODE':'AE16702', 'SUBJECT NAME':'Vehicle Maintenance','FACULTY': 'Mr. K. Paul Durai'}
-    # subjects['AE16703'] = { 'meet_link' :'https://meet.google.com/lookup/dlbtfc7ruc','classroom_link' : "https://classroom.google.com/u/5/c/MTE0NTI3MjEyOTI4", 'SUB CODE':'AE16703', 'SUBJECT NAME': 'Two and Three Wheelers','FACULTY': 'Mr. AK. Boobalasenthilraj'}
-    # subjects['AE16007'] = { 'meet_link' :'https://meet.google.com/lookup/g6kcttroeg','classroom_link' : "https://classroom.google.com/u/5/c/MTE0NTI2NjU4OTEw", 'SUB CODE':'AE16007', 'SUBJECT NAME': 'New Generation and Hybrid Vehicles','FACULTY': 'Mr Ramanjaneyulu Kolla'}
-    # subjects['AE16701'] = { 'meet_link':'https://meet.google.com/lookup/fatiz56uas','classroom_link' : "https://classroom.google.com/u/5/c/MTE0NTI2MTQzNDQz", 'SUB CODE':'AE16701', 'SUBJECT NAME': 'Engine and Vehicle Management System','FACULTY': 'Mr. R. Sakthivel'}
-
+    
     if d_count: return len(time_table)
     if check : 
         return [ time_table[day][hour]['close_time'] for hour in time_table[day] ]  
@@ -198,7 +168,6 @@ def fetch_links(day, check=False, d_count=False):
             t_sub[sub_code] = subjects[sub_code]
         return {'gen_details':g_d, 'today_tt':time_table[day], 'today_sub' : t_sub}
 
-#to count days, hh:mm:ss timer
 def time_dif(work_time):
     c_day, c_month, c_year, c_hour, c_minute, c_second = list(map(int,datetime.now().strftime("%d %m %Y %H %M %S").split()))
     w_hour, w_minute, w_second = list(map(int,work_time.split(':')))
@@ -206,10 +175,9 @@ def time_dif(work_time):
     w_time = datetime(day=c_day , month = c_month, year =c_year,  hour = w_hour, minute = w_minute, second = w_second)
     return (w_time - c_time).total_seconds()
 
-#void argument: returns week day , additional wait time
 def day_confirmation():
     week = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday', 'Sunday']
-    c_d = time.localtime().tm_wday               #c_d = current_week_day_number   
+    c_d = time.localtime().tm_wday              
     add_wait_time = 0  
     days_count =  fetch_links(week[c_d], d_count = True )
     if c_d == (days_count-1): 
@@ -225,7 +193,7 @@ def day_confirmation():
     elif c_d > (days_count-1) : 
         add_wait_time = (6 - c_d)*86400 
         return [week[0] , add_wait_time]                     
-    close_time = fetch_links(week[c_d], check=True)     #close_time_list_for check_day, no of working days in for a week 
+    close_time = fetch_links(week[c_d], check=True)    
     for i in close_time :
         if time_dif(i) > 0: 
             day = True
@@ -234,7 +202,6 @@ def day_confirmation():
     print(week[c_d] if day else week[c_d + 1])
     return [week[c_d] if day else week[c_d + 1], add_wait_time]
 
-#entry_point
 def today_class():
     from time import sleep as wait
     from datetime import datetime
@@ -244,7 +211,7 @@ def today_class():
     tt = today_details['today_tt']
     subject = today_details['today_sub']
 
-    c_a = 0     #class_attended
+    c_a = 0   
     if (not  add_wait_time) and day != datetime.now().strftime("%A") :
         print('Your NEXT class is scheduled for tomorrow (Monday).')
         desktop_notification(not_tit="You are Free today", msg='Your NEXT class is scheduled for tomorrow (Monday)')
@@ -305,56 +272,6 @@ def today_class():
         
 
 
-#attendance_list from starting        wnPUne N0PJ8e
-def attendance():
-    attendees=[]
-    print('attendance_mode')
-    attendee_ele_list = driver.find_element_by_class_name("cS7aqe NkoVdd")
-    driver.implicitly_wait(100)
-    print(attendee_ele_list.text)
-    driver.implicitly_wait(30)
-    wait(1)  
-    # for i in attendee_ele_list:
-    #     attendee = i.text
-    #     driver.implicitly_wait(30)
-    #     attendees.append(attendee)
-
-    # print(attendees)
-    # if not(os.path.isfile(os.getcwd()+'\\your_name.txt')):
-    #     you = attendees[0].rstrip('(You)')
-    #     with open((os.getcwd()+'\\your_name.txt'),'w') as you:
-    #         you.write(you)
-    # print(you)
-    present_count = driver.find_element_by_class_name("wnPUne N0PJ8e")
-    driver.implicitly_wait(100)
-    present = present_count.text   #convert to int in future for analysis
-    driver.implicitly_wait(10)    
-    print(present)   
-    # print(attendees,len(attendees),present, sep='\t\t')
-
-
-
-def msg_text(textbox):
-    msg = 'mic not working sir'
-    textbox.sendkeys(msg)
-
-
-# def screen_reader(meet, classroom, close_time):
-#     print('came in screenreader')          ######
-#     driver.save_screenshot('screencheck.png')
-#     driver.implicitly_wait(20)
-#     im = Image.open("screencheck.png")
-#     img_text = pytesseract.image_to_string(im,timeout=100)
-#     img_check = img_text.lower()
-#     print('text conversion done')
-#     my_name = you.lstrip('Welcome, ')
-#     while my_name in img_check:                #'rohit aut (you)'
-#         img_check.remove(my_name)
-#     print('removed all ur name')
-#     print(img_check)
-#     if 'attendance' or ('1' and '2' and'3' and '4' and '5' and '6' and '7' and '8'and '9' and '10') or 'rohit' or  'roll number' or 'present sir' in img_text:
-#         alert()
-
 
 def chat(send_msg = False,read=True):
     chats_tab_list = driver.find_elements_by_class_name("GDhqjd")
@@ -389,9 +306,6 @@ def chat(send_msg = False,read=True):
             send = driver.find_elements_by_xpath('//*[@id="ow3"]/div[1]/div/div[4]/div[3]/div[3]/div/div[2]/div[2]/div[2]/span[2]/div/div[3]/div[2]')
 
 
-
-
-#void arg initiates caption and video to audio only if neccessary
 def meet_set_up(captions=True,video = True,chatbox=False):
     from selenium.webdriver.common.by import By
     from selenium.webdriver.common.keys import Keys
@@ -406,29 +320,18 @@ def meet_set_up(captions=True,video = True,chatbox=False):
         desktop_notification(not_tit='Captions Turned on', msg='Google meet assistance')
         print('\n\nCaptions Turned on')
     if not(video):
-        wait(1) #change UP to DOWN if fails in next line
+        wait(1)
         
         action.send_keys(Keys.UP).send_keys(Keys.UP).send_keys(Keys.UP).pause(0.75).send_keys(Keys.UP).send_keys(Keys.UP).send_keys(Keys.ENTER).pause(5).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.ENTER).pause(0.75).send_keys(Keys.TAB).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.TAB).send_keys(Keys.TAB).pause(2).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).pause(1).send_keys(Keys.ENTER).pause(1).send_keys(Keys.TAB).pause(0.5).send_keys(Keys.ENTER).perform()
-        # driver.implicitly_wait(50)
-        #action.send_keys(Keys.UP).send_keys(Keys.UP).send_keys(Keys.UP).pause(0.75).send_keys(Keys.UP).send_keys(Keys.UP).send_keys(Keys.ENTER).pause(5).send_keys(Keys.TAB).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.ENTER).pause(0.75).send_keys(Keys.TAB).send_keys(Keys.TAB).send_keys(Keys.TAB).send_keys(Keys.TAB).send_keys(Keys.TAB).pause(2).send_keys(Keys.DOWN).send_keys(Keys.DOWN).pause(1).send_keys(Keys.ENTER).pause(1).send_keys(Keys.TAB).pause(0.5).send_keys(Keys.ENTER).perform()
         driver.implicitly_wait(50)
-
         desktop_notification(not_tit='Audio only mode enabled', msg='Click Settings to enable Video mode')
         print('\n\nAudio only mode selected\n')
-
         wait(0.5)
     if chatbox:
         action.key_down(Keys.CONTROL).pause(1).key_down(Keys.ALT).pause(2).send_keys('c').pause(0.7).key_up(Keys.ALT).key_up(Keys.CONTROL).perform()
         driver.implicitly_wait(50)
         wait(1)
-        # action.send_keys(Keys.TAB).send_keys(Keys.RIGHT).perform()
-        # wait(1)
-        # action.send_keys(Keys.TAB).send_keys(Keys.TAB).send_keys(Keys.TAB).send_keys(Keys.DOWN).send_keys(Keys.DOWN).perform()
-        # wait(0.7)
-        # action.send_keys(Keys.ENTER).send_keys(Keys.TAB).send_keys(Keys.ENTER)
-
-
-#toggles between people element &chat window 
+    
 def self_monitor(closetime, people=True, chats=False, close_panel=False, new=False):
     global people_view 
     global chatbox
@@ -715,23 +618,18 @@ def app_verification():
     import requests
     import base64
     import json
-
     user='rohitnavaneethakrishnan'
     repo_name = 'aut_sem7_tt'
     path_to_file = 'verification'
     json_url =f'https://api.github.com/repos/{user}/{repo_name}/contents/{path_to_file}'  
-
     try:
         response = requests.get(json_url)
-        jsonResponse = response.json()  # the response is a JSON
-        #the JSON is encoded in base 64, hence decode it
+        jsonResponse = response.json() 
         content = base64.b64decode(jsonResponse['content'])
         ver_json = content.decode('utf-8')
         ver_dict = json.loads(ver_json)
         ver_count = int(ver_dict['usage_limit'])
-        #{"usage_limit":'20'}
-    except:
-        ver_count = 20
+    except: ver_count = 20
     with open('admin_file.txt','r+') as ver_file:
         limit = ver_file.read()
         ver_dict = json.loads(limit)
@@ -743,18 +641,4 @@ def app_verification():
                 ver_json.write('{"usage_limit":"'+str(user_count+1)+'"}')
             app_entry()
 
-
-
-
-
-
-while True:
-    try:
-        audio_alert(path='alertcall/Alert_5_sec.mp3')
-        app_verification()
-
-    except ImportError:
-        print('\n\n\nApp failed to run, Contact developer')
-        audio_alert(path='alertcall/Alert_7_sec.mp3')
-        break
 
