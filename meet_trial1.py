@@ -322,7 +322,7 @@ def meet_set_up(captions=True,video = True,chatbox=False):
     if not(video):
         wait(1)
         
-        action.send_keys(Keys.UP).send_keys(Keys.UP).send_keys(Keys.UP).pause(0.75).send_keys(Keys.UP).send_keys(Keys.UP).send_keys(Keys.ENTER).pause(5).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.ENTER).pause(0.75).send_keys(Keys.TAB).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.TAB).send_keys(Keys.TAB).pause(2).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).pause(1).send_keys(Keys.ENTER).pause(1).send_keys(Keys.TAB).pause(0.5).send_keys(Keys.ENTER).perform()
+        action.send_keys(Keys.UP).pause(0.75).send_keys(Keys.ENTER).pause(5).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.ENTER).pause(0.75).send_keys(Keys.TAB).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.TAB).send_keys(Keys.TAB).pause(2).send_keys(Keys.DOWN).send_keys(Keys.DOWN).send_keys(Keys.DOWN).pause(1).send_keys(Keys.ENTER).pause(1).send_keys(Keys.TAB).pause(0.5).send_keys(Keys.ENTER).perform()
         driver.implicitly_wait(50)
         desktop_notification(not_tit='Audio only mode enabled', msg='Click Settings to enable Video mode')
         print('\n\nAudio only mode selected\n')
