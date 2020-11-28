@@ -460,8 +460,6 @@ def join_meeting(meet, classroom, close_time, new=False):
     wait(1)
     try:
         reload_meet = False
-        classroom = 'https://classroom.google.com/u/4/c/MTY2OTMzMzcxODQ2'
-        meet = 'https://meet.google.com/lookup/bl5xrcfrph'
         driver.execute_script('''window.open(arguments[0],"_self");''',classroom)
         driver.set_page_load_timeout(200)
         driver.save_screenshot(path +'login_check.png')
