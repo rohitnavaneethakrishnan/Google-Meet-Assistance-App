@@ -320,7 +320,7 @@ def meet_set_up(captions=True,video = True,chatbox=False):
         desktop_notification(not_tit='Captions Turned on', msg='Google meet assistance')
         print('\n\nCaptions Turned on')
     if not(video):
-        wait(1)
+        wait(2)
         
         action.send_keys(Keys.UP).pause(1).send_keys(Keys.ENTER).pause(3).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.ENTER).pause(0.75).send_keys(Keys.TAB).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.TAB).send_keys(Keys.TAB).pause(0.75).send_keys(Keys.TAB).pause(2).send_keys(Keys.DOWN).send_keys(Keys.DOWN)..pause(0.75)send_keys(Keys.DOWN).send_keys(Keys.DOWN).pause(1).send_keys(Keys.ENTER).pause(1).send_keys(Keys.TAB).pause(0.5).send_keys(Keys.ENTER).perform()
         driver.implicitly_wait(50)
