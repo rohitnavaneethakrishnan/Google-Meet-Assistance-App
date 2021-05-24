@@ -1,5 +1,4 @@
-# aut_sem7_tt
-Google meet assistance App (Windows):
+# Google meet assistance App
 
 Windows software application, developed in Python 3. 
 An automated google meet URL link opener at the scheduled time. 
